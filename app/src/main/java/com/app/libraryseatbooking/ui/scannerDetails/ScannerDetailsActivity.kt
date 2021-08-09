@@ -148,6 +148,9 @@ class ScannerDetailsActivity : AppCompatActivity(), View.OnClickListener {
                     textViewTotalAmount.visibility(false)
                     endSession.visibility(false)
                     buttonScan.visibility(true)
+
+                    // to make sure service should not be running in no active session state
+                    stopService(SessionService.getIntent(this))
                 }
 
                 is ResultState.Failure -> {
