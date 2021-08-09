@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LibrarySeatBooking</string>
+    <string name="end_session">End Session</string>
+    <string name="scan_now">Scan Now</string>
+    <string name="welcome_text">You do not have any ongoing session.\nPlease click on SCAN NOW button.</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="session_ended_successfully">Session ended successfully</string>
+    <string name="timeout_error">TIMEOUT ERROR!</string>
+    <string name="no_internet">NO INTERNET!</string>
+    <string name="scan_qr_code">Scan QR Code</string>
+    <string name="scanning_cancelled">Scanning cancelled</string>
+    <string name="session_started_min_ago">Session started : %1$d min ago</string>
+    <string name="location_id">Location ID : %1$s</string>
+    <string name="location_details">Location Details : %1$s</string>
+    <string name="price_per_minute">Price per Minute : %1$.2f</string>
+    <string name="start_time">Start Time : %1$s</string>
+    <string name="session_started">Session started : %1$d min ago</string>
+    <string name="time_min_ago">%1$d min ago</string>
+    <string name="library_session_started">Library session started</string>
+    <string name="total_amount">Total Amount : %1$.2f</string>
+</resources>
