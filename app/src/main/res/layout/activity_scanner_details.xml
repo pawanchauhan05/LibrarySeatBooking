@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.scannerDetails.ScannerDetailsActivity">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:id="@+id/textViewWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Welcome" />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewWelcome"
+        android:id="@+id/textViewLocationId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Location ID : " />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewLocationId"
+        android:id="@+id/textViewLocationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Location Details : " />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewLocationDetails"
+        android:id="@+id/textViewPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Price : " />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewPrice"
+        android:id="@+id/textViewStartTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Start Time : " />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewStartTime"
+        android:id="@+id/textViewTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Timer : " />
+
+    <TextView
+        android:padding="5dp"
+        android:layout_below="@+id/textViewTimer"
+        android:id="@+id/textViewTotalAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/total_amount" />
+
+    <Button
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/buttonScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_now" />
+
+    <Button
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/endSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/end_session" />
+
+    <ProgressBar
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/textViewTotalAmount"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+</RelativeLayout>
