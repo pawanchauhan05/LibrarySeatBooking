@@ -63,5 +63,5 @@ ext {
     timberVersion = '4.7.1'
     truthVersion = '0.44'
     hilt_version = '2.36'
-    zoom_version = '1.0.1'
+    zxing_version = '3.6.0'
 }
