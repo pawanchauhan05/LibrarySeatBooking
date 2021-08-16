@@ -197,14 +197,8 @@ class ScannerDetailsActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view!!.id) {
-            R.id.buttonScan -> {
+            R.id.buttonScan, R.id.endSession -> {
                 startScan()
-            }
-
-            R.id.endSession -> {
-                if (this::qrCodeData.isInitialized) {
-                    scannerDetailsViewModel.startOrStopSession(qrCodeData)
-                }
             }
         }
     }

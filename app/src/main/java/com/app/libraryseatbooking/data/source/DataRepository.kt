@@ -1,7 +1,5 @@
 package com.app.libraryseatbooking.data.source
 
-import com.app.libraryseatbooking.R
-import com.app.libraryseatbooking.core.AppController
 import com.app.libraryseatbooking.data.source.local.ILocalDataSource
 import com.app.libraryseatbooking.data.source.remote.IRemoteDataSource
 import com.app.libraryseatbooking.pojo.QRCodeData
@@ -10,7 +8,6 @@ import com.app.libraryseatbooking.utilities.Utility
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.util.*
 
 class DataRepository(
     public val localDataSource: ILocalDataSource,
@@ -34,14 +31,22 @@ class DataRepository(
         try {
             val count = localDataSource.getQRCodeDataCountByLocationId(qrCodeData.location_id)
             if (count == 0) {
-                // start session
-                localDataSource.insertQRCodeData(qrCodeData)
-                val qrCodeData = localDataSource.getQRCodeDataByLocationId(qrCodeData.location_id)
-                emit(ResultState.StartSession(qrCodeData) as ResultState)
+                val localQRCodeData = localDataSource.getQRCodeData()
+                if (localQRCodeData == null) {
+                    // start session
+                    localDataSource.insertQRCodeData(qrCodeData)
+                    val qrCodeData =
+                        localDataSource.getQRCodeDataByLocationId(qrCodeData.location_id)
+                    emit(ResultState.StartSession(qrCodeData) as ResultState)
+                } else {
+                    emit(ResultState.Failure(Exception("Please scan same QR code again to end session")) as ResultState)
+                }
             } else {
+
                 // end session
                 // get data from local, post to remote server and clear from local then update UI
-                val qrCodeData = localDataSource.getQRCodeDataByLocationId(qrCodeData.location_id)
+                val qrCodeData =
+                    localDataSource.getQRCodeDataByLocationId(qrCodeData.location_id)
                 val minutes = Utility.getMinBetweenDates(
                     qrCodeData.sessionEndTime,
                     currentTime
@@ -57,6 +62,7 @@ class DataRepository(
                 }
                 emit(ResultState.Success(serverResponse) as ResultState)
                 emit(ResultState.NoSession("You do not have any ongoing session.\nPlease click on SCAN NOW button.") as ResultState)
+
             }
         } catch (ex: Exception) {
             emit(ResultState.Failure(ex) as ResultState)
